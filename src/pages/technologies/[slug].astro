@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
 import { technologies } from '../../data/technologies';
 
 export function getStaticPaths() {
@@ -99,8 +100,6 @@ const { tech } = Astro.props;
     </section>
 
     <!-- Footer Simple -->
-    <footer class="py-10 border-t border-border text-center text-gray-600 dark:text-gray-400 text-sm bg-background">
-        <p>© 2025 ITWorks Company. All rights reserved.</p>
-    </footer>
+    <Footer />
   </main>
 </Layout>
