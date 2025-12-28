@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { technologies } from '../../data/technologies';
+
+export function getStaticPaths() {
+  return technologies.map((tech) => ({
+    params: { slug: tech.slug },
+    props: { tech },
+  }));
+}
+
+const { tech } = Astro.props;
+---
+
+<Layout title={`${tech.title} | ITWorks`}>
+  <Navbar />
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-background">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none opacity-30">
+        <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
+        <div class="absolute top-40 right-1/4 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <span class="inline-block py-1 px-3 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm font-semibold mb-6 border border-blue-500/20">
+            {tech.category} Solution
+        </span>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-foreground tracking-tight mb-8 leading-tight">
+          {tech.heroTitle}
+        </h1>
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-400 mb-10">
+          {tech.heroDescription}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all hover:shadow-lg transform hover:-translate-y-1">
+              Hire {tech.title.split(' ')[0]} Developers
+            </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-20 bg-card border-y border-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-foreground">Key Features</h2>
+                <p class="text-gray-600 dark:text-gray-400">Why {tech.title} is the right choice for your next project.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {tech.features.map((feature) => (
+                    <div class="p-8 rounded-2xl bg-background border border-border hover:border-blue-500/30 transition-all hover:shadow-lg group">
+                        <div class="text-4xl mb-6">{feature.icon}</div>
+                        <h3 class="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-foreground">Common Use Cases</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+                        We have extensive experience deploying {tech.title} in a variety of scenarios.
+                    </p>
+                    <ul class="space-y-4">
+                        {tech.useCases.map((useCase) => (
+                            <li class="flex items-center gap-3 text-foreground font-medium">
+                                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 text-xs">✓</span>
+                                {useCase}
+                            </li>
+                        ))}
+                    </ul>
+                    <div class="mt-10">
+                        <a href="#contact" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-2">
+                            Discuss your project idea <span>→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-2xl opacity-20"></div>
+                    <div class="relative bg-card border border-border rounded-2xl p-8 aspect-square flex items-center justify-center">
+                        <div class="text-center">
+                            <span class="text-6xl mb-4 block">🚀</span>
+                            <h3 class="text-2xl font-bold text-foreground">Ready to Build?</h3>
+                            <p class="text-gray-500 dark:text-gray-400 mt-2">Let's turn your vision into reality.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Simple -->
+    <footer class="py-10 border-t border-border text-center text-gray-600 dark:text-gray-400 text-sm bg-background">
+        <p>© 2025 ITWorks Company. All rights reserved.</p>
+    </footer>
+  </main>
+</Layout>

@@ -1,0 +1,28 @@
+---
+const awards = [
+  { name: "Top Developer 2024", org: "Clutch", icon: "🏆" },
+  { name: "Best IT Firm", org: "GoodFirms", icon: "⭐" },
+  { name: "Most Innovative", org: "Deloitte", icon: "💡" },
+];
+---
+
+<section class="py-16 bg-blue-50 dark:bg-blue-900/10 border-y border-border">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="text-center md:text-left">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Award Winning Agency</h2>
+      <p class="text-gray-600 dark:text-gray-400">Recognized for excellence in technology and innovation.</p>
+    </div>
+    
+    <div class="flex flex-wrap justify-center gap-6">
+      {awards.map((award) => (
+        <div class="flex items-center gap-3 bg-white dark:bg-gray-800 px-6 py-4 rounded-lg shadow-sm border border-border">
+          <span class="text-2xl">{award.icon}</span>
+          <div class="text-left">
+            <div class="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">{award.org}</div>
+            <div class="text-gray-900 dark:text-white font-bold">{award.name}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

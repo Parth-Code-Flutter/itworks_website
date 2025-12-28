@@ -1,0 +1,126 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navItems = [
+  { name: "Home", href: "#" },
+  { name: "Services", href: "#services" },
+];
+
+const techCategories = [
+  {
+    title: "Frontend",
+    items: [
+        { name: "React.js", slug: "react-js" },
+        { name: "Angular", slug: "angular" },
+        { name: "Vue.js", slug: "vue-js" },
+        { name: "Next.js", slug: "next-js" },
+        { name: "Tailwind CSS", slug: "tailwind-css" }
+    ]
+  },
+  {
+    title: "Backend",
+    items: [
+        { name: "Node.js", slug: "node-js" },
+        { name: "Python", slug: "python" },
+        { name: "Go (Golang)", slug: "go-golang" },
+        { name: "Java", slug: "java" },
+        { name: ".NET Core", slug: "dot-net-core" }
+    ]
+  },
+  {
+    title: "AI & ML",
+    items: [
+        { name: "OpenAI API", slug: "openai-api" },
+        { name: "TensorFlow", slug: "tensorflow" },
+        { name: "PyTorch", slug: "pytorch" },
+        { name: "LangChain", slug: "langchain" },
+        { name: "Computer Vision", slug: "computer-vision" }
+    ]
+  }
+];
+---
+
+<nav class="fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-background/70 border-b border-border">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 cursor-pointer">
+        <a href="/" class="text-2xl font-bold font-[Outfit] text-foreground tracking-tighter">
+          IT<span class="text-blue-600 dark:text-blue-500">Works</span>.
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-1">
+          <a href="/" class="text-gray-900 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            Home
+          </a>
+          
+          <!-- Technologies Dropdown -->
+          <div class="group relative">
+            <button class="text-gray-900 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 inline-flex items-center gap-1">
+              Technologies
+              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            <!-- Mega Menu -->
+            <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top px-4">
+              <div class="bg-card border border-border rounded-xl shadow-2xl p-8 grid grid-cols-3 gap-8 relative overflow-hidden">
+                 <!-- Decorator -->
+                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                 
+                 {techCategories.map((category) => (
+                    <div>
+                        <h3 class="font-bold text-foreground text-lg mb-4 flex items-center gap-2">
+                            <span class="w-1.5 h-6 bg-blue-500 rounded-full"></span>
+                            {category.title}
+                        </h3>
+                        <ul class="space-y-3">
+                            {category.items.map((item) => (
+                                <li>
+                                    <a href={`/technologies/${item.slug}`} class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium block transition-colors hover:translate-x-1 duration-200">
+                                        {item.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                 ))}
+              </div>
+            </div>
+          </div>
+
+          <a href="#services" class="text-gray-900 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            Services
+          </a>
+          <a href="#solutions" class="text-gray-900 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            Solutions
+          </a>
+          <a href="#about" class="text-gray-900 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+            Company
+          </a>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="hidden md:flex items-center gap-4">
+        <ThemeToggle />
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+          Get Started
+        </a>
+      </div>
+      
+       <!-- Mobile menu button placeholder (functionality can be added later) -->
+       <div class="-mr-2 flex md:hidden">
+          <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+    </div>
+  </div>
+</nav>

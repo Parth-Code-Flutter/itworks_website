@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import Clients from '../components/Clients.astro';
+import Awards from '../components/Awards.astro';
+---
+
+<Layout title="ITWorks - Modern IT Solutions Company">
+	<Navbar />
+	<main>
+		<Hero />
+        <Stats />
+        <Clients />
+        <Awards />
+        
+        <!-- Feature/Services Preview (Placeholder for next steps) -->
+        <section class="py-20 bg-background">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-foreground">Why Choose Us</h2>
+                     <p class="text-gray-600 dark:text-gray-400">Delivering excellence in every line of code.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    {[1, 2, 3].map((i) => (
+                        <div class="p-8 rounded-2xl bg-card border border-border hover:border-blue-500/30 transition-all hover:shadow-lg group">
+                            <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+                                <span class="text-blue-500 dark:text-blue-400">✦</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-foreground">Enterprise Solutions</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Scalable software architecture designed for high-performance business environments.</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+	</main>
+    
+    <footer class="py-10 border-t border-border text-center text-gray-600 dark:text-gray-500 text-sm">
+        <p>© 2025 ITWorks Company. All rights reserved.</p>
+    </footer>
+</Layout>
