@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import { ChevronDown, Menu, Code2, Server, BrainCircuit } from 'lucide-astro';
 
 const navItems = [
   { name: "Home", href: "#" },
@@ -61,21 +62,23 @@ const techCategories = [
           <div class="group relative">
             <button class="text-gray-900 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 inline-flex items-center gap-1">
               Technologies
-              <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
+              <ChevronDown class="w-4 h-4 transition-transform group-hover:rotate-180" />
             </button>
             
             <!-- Mega Menu -->
             <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-screen max-w-4xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top px-4">
-              <div class="bg-card border border-border rounded-xl shadow-2xl p-8 grid grid-cols-3 gap-8 relative overflow-hidden">
+              <div class="bg-card/95 backdrop-blur-xl border border-border rounded-xl shadow-2xl p-8 grid grid-cols-3 gap-8 relative overflow-hidden ring-1 ring-white/10">
                  <!-- Decorator -->
-                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
                  
                  {techCategories.map((category) => (
                     <div>
                         <h3 class="font-bold text-foreground text-lg mb-4 flex items-center gap-2">
-                            <span class="w-1.5 h-6 bg-blue-500 rounded-full"></span>
+                            <span class="p-1.5 rounded-lg bg-blue-500/10 text-blue-500">
+                                {category.title === 'Frontend' && <Code2 class="w-5 h-5" />}
+                                {category.title === 'Backend' && <Server class="w-5 h-5" />}
+                                {category.title === 'AI & ML' && <BrainCircuit class="w-5 h-5" />}
+                            </span>
                             {category.title}
                         </h3>
                         <ul class="space-y-3">
@@ -108,7 +111,7 @@ const techCategories = [
       <!-- Actions -->
       <div class="hidden md:flex items-center gap-4">
         <ThemeToggle />
-        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95">
           Get Started
         </a>
       </div>
@@ -116,9 +119,7 @@ const techCategories = [
        <!-- Mobile menu button placeholder (functionality can be added later) -->
        <div class="-mr-2 flex md:hidden">
           <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <Menu class="h-6 w-6" />
           </button>
         </div>
     </div>

@@ -13,13 +13,17 @@ const clients = [
       <p class="text-gray-600 dark:text-gray-400">We partner with the world's most innovative companies.</p>
     </div>
     
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center opacity-70">
-      {clients.map((client) => (
-        <div class="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-pointer">
-           <!-- Placeholder for Logo - Using stylized text for now -->
-           <span class="text-xl font-bold text-gray-800 dark:text-gray-200">{client}</span>
+    <div class="relative">
+        <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center px-4">
+          {clients.map((client) => (
+            <div class="flex items-center justify-center p-4 grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100 cursor-pointer hover:scale-110 transform">
+               <span class="text-xl font-black font-[Outfit] tracking-tighter text-foreground/80">{client}</span>
+            </div>
+          ))}
         </div>
-      ))}
     </div>
   </div>
 </section>
